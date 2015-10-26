@@ -24,7 +24,7 @@
     		<version>2.2</version>
     		<configuration>
       		<url>http://localhost:8080/manager/text</url>
-       		<!-- <path>/</path> -->
+       		<path>/</path>
       		<server>tomcat</server>
       		<username>tomcat</username>
       		<password>123456</password>

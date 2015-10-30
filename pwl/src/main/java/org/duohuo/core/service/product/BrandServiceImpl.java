@@ -1,5 +1,7 @@
 package org.duohuo.core.service.product;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.duohuo.common.page.Pagination;
@@ -7,6 +9,7 @@ import org.duohuo.core.bean.product.Brand;
 import org.duohuo.core.dao.product.BrandDao;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+//import org.duohuo.core.query.product.BrandQuery;
 
 
 
@@ -38,5 +41,35 @@ public class BrandServiceImpl implements BrandService{
 	@Override
 	public void addBrand(Brand brand) {
 		brandDao.addBrand(brand);
+	}
+
+	@Override
+	public void deleteBrandByKey(Integer id) {
+		brandDao.deleteBrandByKey(id);
+		
+	}
+
+	@Override
+	public void deleteBrandByKeys(Integer[] ids) {
+		brandDao.deleteBrandByKeys(ids);
+		
+	}
+
+	@Override
+	public void updateBrandByKey(Brand brand) {
+		brandDao.updateBrandByKey(brand);
+		
+	}
+
+	@Override
+	public Brand getBrandByKey(Integer id) {
+		// TODO Auto-generated method stub
+		return brandDao.getBrandByKey(id);
+	}
+
+	@Override
+	public List<Brand> getBrandList(BrandQuery brandQuery) {
+		// TODO Auto-generated method stub
+		return brandDao.getBrandList(brandQuery);
 	}
 }

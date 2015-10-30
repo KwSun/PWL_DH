@@ -1,7 +1,5 @@
 package org.duohuo.core.controller.admin;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.stereotype.Controller;

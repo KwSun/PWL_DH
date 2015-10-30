@@ -4,6 +4,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>pwl-add</title>
+<script type="text/javascript">
+//上传图片
+function uploadPic(){
+	//定义参数
+	var options = {
+		url : "/upload/uploadPic.do",
+		dataType : "json",
+		type :  "post",
+		success : function(data){
+			//回调的二个路径  
+			//url，显示图片
+			$("#allImgUrl").attr("src",data.url);
+			//path,相对路径用来保存到数据库
+			$("#path").val(data.path);
+		}
+	};
+	
+	//jquery.form使用方式
+	$("#jvForm").ajaxSubmit(options);
+	
+}
+
+</script>
 </head>
 <body>
 <div class="box-positon">
@@ -14,7 +37,7 @@
 	<div class="clear"></div>
 </div>
 <div class="body-box" style="float:right">
-	<form id="jvForm" action="o_save.shtml" method="post" enctype="multipart/form-data">
+	<form id="jvForm" action="add.do" method="post" enctype="multipart/form-data">
 		<table cellspacing="1" cellpadding="2" width="100%" border="0" class="pn-ftable">
 			<tbody>
 				<tr>
@@ -36,19 +59,20 @@
 					<td width="20%" class="pn-flabel pn-flabel-h"></td>
 						<td width="80%" class="pn-fcontent">
 						<img width="100" height="100" id="allImgUrl"/>
-						<input type="file" />
+						<input type="hidden" name="imgUrl" id="path"/>
+						<input type="file" onchange="uploadPic()" name="pic"/>
 					</td>
 				</tr>
 				<tr>
 					<td width="20%" class="pn-flabel pn-flabel-h">
 						品牌描述:</td><td width="80%" class="pn-fcontent">
-						<input type="text" class="required" name="name" maxlength="80"  size="60"/>
+						<input type="text" class="required" name="description" maxlength="80"  size="60"/>
 					</td>
 				</tr>
 				<tr>
 					<td width="20%" class="pn-flabel pn-flabel-h">
 						排序:</td><td width="80%" class="pn-fcontent">
-						<input type="text" class="required" name="name" maxlength="80"/>
+						<input type="text" class="required" name="sort" maxlength="80"/>
 					</td>
 				</tr>
 				<tr>

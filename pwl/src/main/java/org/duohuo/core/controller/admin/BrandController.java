@@ -64,6 +64,7 @@ public class BrandController {
 		
 		return "brand/list";
 	}
+	
 	//跳转品牌添加页面
 	@RequestMapping(value= "/brand/toAdd.do")
 	public String toAdd(){

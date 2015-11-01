@@ -9,15 +9,13 @@ import java.util.Random;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FilenameUtils;
+import org.duohuo.common.web.ResponseUtils;
+import org.duohuo.core.web.Constants;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
-import org.duohuo.common.web.ResponseUtils;
-import org.duohuo.core.web.Constants;
-
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 
@@ -35,8 +33,9 @@ public class UploadController {
 	
 	//上传图片
 	@RequestMapping(value = "/upload/uploadPic.do")
+	//异步，SpringMVC不需要返回值;用HttpServletResponse返回路径
 	public void uploadPic(@RequestParam(required = false) MultipartFile pic,HttpServletResponse response){
-		//extension of the pic
+		//extension of the pic，扩展名
 		String ext = FilenameUtils.getExtension(pic.getOriginalFilename());
 		
 		//the way to create pic name
@@ -53,7 +52,7 @@ public class UploadController {
 		
 		//instantiation
 		Client client = new Client();
-		//save to the database
+		//save to the database，相对路径
 		String path = "upload/" + format + "." + ext;
 		
 		//another tomcat path
@@ -69,7 +68,7 @@ public class UploadController {
 			e.printStackTrace();
 		}
 		
-		//return the two paths,the basement of JSONObject  is map
+		//return the two paths,the basement of JSONObject  is map,拼接字符串
 		JSONObject jo = new JSONObject();
 		jo.put("url", url);
 		jo.put("path",path);

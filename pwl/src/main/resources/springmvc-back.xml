@@ -10,7 +10,7 @@
      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
-	<!-- springmvc 扫包  @Controller @Service  .....-->
+	<!-- springmvc 扫包  @Controller @Service.... ，use-default-filters，SpringMVC不能有默认过滤器，不然覆盖了Spring的上下文），所以只扫Controller层，扫完停止-->
 	<context:component-scan base-package="org.duohuo" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
@@ -22,7 +22,7 @@
 		</property>
 	</bean>
 	
-	<!-- jsp视图 -->
+	<!-- jsp视图，视图解析器-->
 	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/back_page/"/>
 		<property name="suffix" value=".jsp"/>
@@ -30,7 +30,7 @@
 	
 	<!-- 上传图片 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<!-- 最大上传尺寸单位是B，设置为1M -->
+		<!-- 最大上传尺寸   B    1M -->
 		<property name="maxUploadSize"  value="1048576"/>
 	</bean>
 	

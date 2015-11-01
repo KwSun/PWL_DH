@@ -13,16 +13,18 @@ function uploadPic(){
 		dataType : "json",
 		type :  "post",
 		success : function(data){
-			//回调的二个路径  
-			//url，显示图片
+			/* data取出回调的相关信息 */
+			//回调 二个路径  
+			//url
+			//path
 			$("#allImgUrl").attr("src",data.url);
-			//path,相对路径用来保存到数据库
 			$("#path").val(data.path);
 		}
 	};
 	
-	//jquery.form使用方式
+	//jquery.form,添加请求路径，自定义options参数
 	$("#jvForm").ajaxSubmit(options);
+	
 	
 }
 
@@ -66,7 +68,7 @@ function uploadPic(){
 				<tr>
 					<td width="20%" class="pn-flabel pn-flabel-h">
 						品牌描述:</td><td width="80%" class="pn-fcontent">
-						<input type="text" class="required" name="description" maxlength="80"  size="60"/>
+						<input type="text" class="required" name=description maxlength="80"  size="60"/>
 					</td>
 				</tr>
 				<tr>

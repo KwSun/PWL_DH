@@ -1,11 +1,9 @@
 package org.duohuo.core.controller;
 
-
 import java.util.Date;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 
 /**
  * 后台测试
@@ -15,14 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ProductController {
-	
 	@RequestMapping(value = "/test/springmvc.do")
 	public String test(String name,Date birthday){
 		
 		System.out.println();
 		return "";
 	}
-
-
-	
 }

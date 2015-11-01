@@ -20,12 +20,12 @@ public class TestTbServiceImpl implements TestTbService{
 	@Resource
 	private TestTbDao testTbDao;
 	
-//	关闭事务，只读
+//	如果查询，关闭事务，只读
 //	@Transactional(readOnly = true)
 	public void addTestTb(TestTb testTb) {
 		testTbDao.addTestTb(testTb);
 		
-		throw new RuntimeException();
+		//throw new RuntimeException();
 	}
 
 }

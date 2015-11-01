@@ -74,7 +74,7 @@ function uploadPic(){
 				<tr>
 					<td width="20%" class="pn-flabel pn-flabel-h">
 						排序:</td><td width="80%" class="pn-fcontent">
-						<input type="text" class="required" name="sort"  value="${brand.sort }" maxlength="80"/>
+						<input type="text" class="required" name="sort" value="${brand.sort }" maxlength="80"/>
 					</td>
 				</tr>
 				<tr>

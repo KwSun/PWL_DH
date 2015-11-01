@@ -5,7 +5,6 @@ import org.duohuo.core.bean.TestTb;
 import org.duohuo.core.service.TestTbService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
 /**
  * 
  * @author Kw

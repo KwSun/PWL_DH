@@ -3,7 +3,7 @@
   <groupId>org.duohuo</groupId>
   <artifactId>pwl</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <!-- <packaging>war</packaging> -->
+  <packaging>war</packaging>
   <name>pwl</name>
   <build>
     <plugins>

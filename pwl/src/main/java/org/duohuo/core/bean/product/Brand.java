@@ -2,7 +2,6 @@ package org.duohuo.core.bean.product;
 
 import org.duohuo.core.web.Constants;
 
-//import org.duohuo.core.web.Constants;
 
 /**
  * 品牌

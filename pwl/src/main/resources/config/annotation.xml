@@ -12,7 +12,6 @@
 
 	<!--spring 扫包   @Service .....-->
 	<context:component-scan base-package="org.duohuo">
-	<!--spring不扫包含Controller注解的.....-->
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	

@@ -1,11 +1,14 @@
 package org.duohuo.core.service.product;
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.duohuo.common.page.Pagination;
 import org.duohuo.core.bean.product.Brand;
 import org.duohuo.core.dao.product.BrandDao;
+import org.duohuo.core.query.BrandQuery;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -64,6 +67,12 @@ public class BrandServiceImpl implements BrandService{
 	public Brand getBrandByKey(Integer id) {
 		// TODO Auto-generated method stub
 		return brandDao.getBrandByKey(id);
+	}
+	
+	@Override
+	public List<Brand> getBrandList(BrandQuery brandQuery) {
+		// TODO Auto-generated method stub
+		return brandDao.getBrandList(brandQuery);
 	}
 
 }

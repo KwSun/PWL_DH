@@ -15,7 +15,7 @@
 		<property name="dataSource" ref="dataSource"/>
 		<property name="mapperLocations" value="classpath:org/duohuo/core/dao/*.xml"/>
 		<!-- 别名 -->
-		<property name="typeAliasesPackage" value="org.duohuo.core.bean"/>
+		<property name="typeAliasesPackage" value="org.duohuo.core.bean,org.duohuo.core.query"/>
 	</bean>
 	
 	<!-- 扫包  -->

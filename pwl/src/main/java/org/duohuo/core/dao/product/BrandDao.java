@@ -3,6 +3,7 @@ package org.duohuo.core.dao.product;
 import java.util.List;
 
 import org.duohuo.core.bean.product.Brand;
+import org.duohuo.core.query.BrandQuery;
 /**
  * 品牌
  * @author Kw
@@ -11,8 +12,11 @@ import org.duohuo.core.bean.product.Brand;
  */
 public interface BrandDao {
 	
-	//List集合
+	//List集合（分页）
 	public List<Brand> getBrandListWithPage(Brand brand);
+	
+	//查询集合
+	public List<Brand> getBrandList(BrandQuery brandQuery);
 	
 	//查询总记录数
 	public int getBrandCount(Brand brand);

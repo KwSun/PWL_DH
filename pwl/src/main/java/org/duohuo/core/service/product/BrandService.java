@@ -1,8 +1,10 @@
 package org.duohuo.core.service.product;
 
+import java.util.List;
+
 import org.duohuo.common.page.Pagination;
 import org.duohuo.core.bean.product.Brand;
-//import org.duohuo.core.query.product.BrandQuery;
+import org.duohuo.core.query.BrandQuery;
 
 /**
  * 业务层
@@ -14,6 +16,9 @@ import org.duohuo.core.bean.product.Brand;
 public interface BrandService {
 	//获取分页列表对象
 	public Pagination getBrandListWithPage(Brand brand);
+	
+	//查询集合
+	public List<Brand> getBrandList(BrandQuery brandQuery);
 	
 	
 	//添加品牌

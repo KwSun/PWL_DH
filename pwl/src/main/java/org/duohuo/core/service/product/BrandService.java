@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.duohuo.common.page.Pagination;
 import org.duohuo.core.bean.product.Brand;
-import org.duohuo.core.query.BrandQuery;
+import org.duohuo.core.query.product.BrandQuery;
 
 /**
  * 业务层

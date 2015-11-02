@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.duohuo.common.junit.SpringJunitTest;
 import org.duohuo.core.bean.product.Brand;
-import org.duohuo.core.query.BrandQuery;
+import org.duohuo.core.query.product.BrandQuery;
 import org.duohuo.core.service.product.BrandService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

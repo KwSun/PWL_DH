@@ -1,4 +1,4 @@
-package org.duohuo.core.query;
+package org.duohuo.core.query.product;
 
 import java.util.ArrayList;
 import java.util.List;

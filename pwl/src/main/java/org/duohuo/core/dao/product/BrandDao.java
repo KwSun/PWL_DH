@@ -3,7 +3,7 @@ package org.duohuo.core.dao.product;
 import java.util.List;
 
 import org.duohuo.core.bean.product.Brand;
-import org.duohuo.core.query.BrandQuery;
+import org.duohuo.core.query.product.BrandQuery;
 /**
  * 品牌
  * @author Kw

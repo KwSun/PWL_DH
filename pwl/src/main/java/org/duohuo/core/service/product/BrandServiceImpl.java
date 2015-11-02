@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import org.duohuo.common.page.Pagination;
 import org.duohuo.core.bean.product.Brand;
 import org.duohuo.core.dao.product.BrandDao;
-import org.duohuo.core.query.BrandQuery;
+import org.duohuo.core.query.product.BrandQuery;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

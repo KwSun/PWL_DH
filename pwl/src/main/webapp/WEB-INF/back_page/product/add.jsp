@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<title>babasport-add</title>
+<title>pwl-add</title>
 <style type="">
 .h2_ch a:hover, .h2_ch a.here {
     color: #FFF;
@@ -46,11 +46,34 @@ $(function(){
 				var fck = new FCKeditor("productdesc");
 				fck.BasePath = "/res/fckeditor/";
 				fck.Height = 400 ;
+				fck.Config["ImageUploadURL"] = "/upload/uploadFck.do";
 				fck.ReplaceTextarea();
 			}
 		});
 	});
 });
+//上传图片
+function uploadPic(){
+	//定义参数
+	var options = {
+		url : "/upload/uploadPic.do",
+		dataType : "json",
+		type :  "post",
+		success : function(data){
+			//回调 二个路径  
+			//url
+			//path
+			$("#allImgUrl").attr("src",data.url);
+			$("#path").val(data.path);
+		}
+	};
+	
+	
+	//jquery.form使用方式
+	$("#jvForm").ajaxSubmit(options);
+	
+}
+
 </script>
 </head>
 <body>
@@ -61,11 +84,13 @@ $(function(){
 	</form>
 	<div class="clear"></div>
 </div>
-<h2 class="h2_ch"><span id="tabs">
+<h2 class="h2_ch">
+	<span id="tabs">
 <a href="javascript:void(0);" ref="#tab_1" title="基本信息" class="here">基本信息</a>
 <a href="javascript:void(0);" ref="#tab_2" title="商品描述" class="nor">商品描述</a>
 <a href="javascript:void(3);" ref="#tab_3" title="商品参数" class="nor">包装清单</a>
-</span></h2>
+	</span>
+	</h2>
 <div class="body-box" style="float:right">
 	<form id="jvForm" action="add.do" method="post" enctype="multipart/form-data">
 		<table cellspacing="1" cellpadding="2" width="100%" border="0" class="pn-ftable">
@@ -76,8 +101,9 @@ $(function(){
 						商品类型:</td><td width="80%" class="pn-fcontent">
 								<select name="typeId">
 									<option value="">请选择</option>
-									<option value="2">瑜珈服</option>
-									<option value="3">瑜伽辅助</option>
+									<c:forEach items="${types }" var="type">
+									<option value="${type.id }">${type.name }</option>
+									</c:forEach>
 								</select>
 					</td>
 				</tr>
@@ -93,9 +119,9 @@ $(function(){
 						商品品牌:</td><td width="80%" class="pn-fcontent">
 						<select name="brandId">
 							<option value="">请选择品牌</option>
-							<option value="1">依琦莲</option>
-							<option value="2">凯速（KANSOON）</option>
-							<option value="3">梵歌纳（vangona）</option>
+							<c:forEach items="${brands }" var="brand">
+							<option value="${brand.id }">${brand.name }</option>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>
@@ -108,25 +134,18 @@ $(function(){
 				<tr>
 					<td width="20%" class="pn-flabel pn-flabel-h">
 						材质:</td><td width="80%" class="pn-fcontent">
-							<input type="checkbox" value="1" name="feature"/>环保人棉
-							<input type="checkbox" value="1" name="feature"/>环保人棉
-							<input type="checkbox" value="1" name="feature"/>环保人棉
-							<input type="checkbox" value="1" name="feature"/>环保人棉
-							<input type="checkbox" value="1" name="feature"/>环保人棉
-							<input type="checkbox" value="1" name="feature"/>环保人棉
+							<c:forEach items="${features }" var="feature">
+							<input type="checkbox" value="${feature.id }" name="feature"/>${feature.name }
+							</c:forEach>
 					</td>
 				</tr>
 				<tr>
 					<td width="20%" class="pn-flabel pn-flabel-h">
 						<span class="pn-frequired">*</span>
 						颜色:</td><td width="80%" class="pn-fcontent">
-							<input type="checkbox" value="9" name="color"/>西瓜红
-							<input type="checkbox" value="9" name="color"/>西瓜红
-							<input type="checkbox" value="9" name="color"/>西瓜红
-							<input type="checkbox" value="9" name="color"/>西瓜红
-							<input type="checkbox" value="9" name="color"/>西瓜红
-							<input type="checkbox" value="9" name="color"/>西瓜红
-							<input type="checkbox" value="9" name="color"/>西瓜红
+							<c:forEach items="${colors }" var="color">
+							<input type="checkbox" value="${color.id }" name="color"/>${color.name }
+							</c:forEach>
 					</td>
 				</tr>
 				<tr>
@@ -159,8 +178,8 @@ $(function(){
 				<tr>
 					<td width="20%" class="pn-flabel pn-flabel-h"></td>
 						<td width="80%" class="pn-fcontent">
-						<img width="100" height="100" id="product_url"/>
-						<input type="hidden" name="picPath" id="product_path"/>
+						<img width="100" height="100" id="allImgUrl"/>
+						<input type="hidden" name="url" id="path"/>
 						<input type="file" onchange="uploadPic()" name="pic"/>
 					</td>
 				</tr>

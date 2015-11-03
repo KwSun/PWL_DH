@@ -14,9 +14,9 @@
         <div class="welcom-con">
         	 <div class="we-txt">
              	  <p>
-                  欢迎使用新巴巴运动网的管理系统！<br />
-                  新巴巴运动网的程序版本： babasportv1.0 【<a href="http://localhost:8080" target="_blank">查看最新版本</a>】<br />
-                  您上次登录的时间是：2014-10-15 <br />
+                  欢迎使用飘物流!<br />
+                  飘物流的程序版本： PWL1.0 【<a href="http://localhost:8080" target="_blank">查看最新版本</a>】<br />
+                  您上次登录的时间是：2015-10-20 <br />
                   已用内存：<span style="color:#0078ff;">100MB</span>&nbsp;&nbsp;&nbsp;&nbsp;剩余内存：<span style="color:#ff8400;">100MB </span>&nbsp;&nbsp;&nbsp;&nbsp;最大内存：<span style="color:#00ac41;">200MB</span>
                   </p>
              </div>

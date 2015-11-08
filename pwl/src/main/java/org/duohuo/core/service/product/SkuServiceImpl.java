@@ -24,6 +24,8 @@ public class SkuServiceImpl implements SkuService {
 
 	@Resource
 	SkuDao skuDao;
+	@Resource
+	ColorService colorService;
 
 	/**
 	 * 插入数据库
@@ -78,6 +80,22 @@ public class SkuServiceImpl implements SkuService {
 	
 	@Transactional(readOnly = true)
 	public List<Sku> getSkuList(SkuQuery skuQuery) {
-		return skuDao.getSkuList(skuQuery);
+		List<Sku> skus = skuDao.getSkuList(skuQuery);
+		//颜色加载完
+		for(Sku sku : skus){
+			sku.setColor(colorService.getColorByKey(sku.getColorId()));
+		}
+		return skus;
 	}
+
+//	@Override
+//	public List<Sku> getStock(Integer productId) {
+//		// TODO Auto-generated method stub
+//		List<Sku> skus = skuDao.getStock(productId);
+//		//颜色加载完结
+//		for(Sku sku : skus){
+//			sku.setColor(colorService.getColorByKey(sku.getColorId()));
+//		}
+//		return skus;
+//	}
 }

@@ -115,7 +115,7 @@ public class UploadController {
 				//保存数据库
 				String path = "upload/" + format + "." + ext;
 				
-				//另一台服务器的请求路径是?
+				//另一台服务器的请求路径
 				String url = Constants.IMAGE_URL  + path;
 				//设置请求路径
 				WebResource resource = client.resource(url);

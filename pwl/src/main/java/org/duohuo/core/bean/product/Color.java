@@ -2,10 +2,8 @@ package org.duohuo.core.bean.product;
 
 import java.io.Serializable;
 
-
-
 /**
- * 颜色
+ * 
  * @author Kw
  *
  * Date: 2015年10月29日
@@ -48,4 +46,33 @@ public class Color implements Serializable {
 	public String toString() {
 		return "Color [id=" + id + ",name=" + name + ",parentId=" + parentId + ",imgUrl=" + imgUrl + "]";
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((imgUrl == null) ? 0 : imgUrl.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result
+				+ ((parentId == null) ? 0 : parentId.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)  
+			return true;
+		if (obj == null)     
+			return false;
+		if (getClass() != obj.getClass()) 
+			return false;
+		Color other = (Color) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+	
+	
 }

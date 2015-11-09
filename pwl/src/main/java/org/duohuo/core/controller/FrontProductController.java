@@ -1,21 +1,26 @@
 package org.duohuo.core.controller;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.duohuo.common.page.Pagination;
 import org.duohuo.core.bean.product.Brand;
+import org.duohuo.core.bean.product.Color;
 import org.duohuo.core.bean.product.Feature;
 import org.duohuo.core.bean.product.Product;
+import org.duohuo.core.bean.product.Sku;
 import org.duohuo.core.bean.product.Type;
 import org.duohuo.core.query.product.BrandQuery;
 import org.duohuo.core.query.product.FeatureQuery;
 import org.duohuo.core.query.product.ProductQuery;
+import org.duohuo.core.query.product.SkuQuery;
 import org.duohuo.core.query.product.TypeQuery;
 import org.duohuo.core.service.product.BrandService;
 import org.duohuo.core.service.product.FeatureService;
 import org.duohuo.core.service.product.ProductService;
+import org.duohuo.core.service.product.SkuService;
 import org.duohuo.core.service.product.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +32,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 
  * @author Kw
  *
- *Date: 2015年10月28日
+ *         Date: 2015年10月28日
  */
 @Controller
 public class FrontProductController {
@@ -39,6 +44,8 @@ public class FrontProductController {
 	private TypeService typeService;
 	@Autowired
 	private FeatureService featureService;
+	@Autowired
+	private SkuService skuService;
 
 	// 商品列表页面
 	@RequestMapping(value = "/product/display/list.shtml")
@@ -125,6 +132,33 @@ public class FrontProductController {
 		model.addAttribute("pagination", pagination);
 
 		return "product/product";
+	}
+
+	// 跳转商品详情页
+	@RequestMapping(value = "/product/detail.shtml")
+	public String detail(Integer id, ModelMap model) {
+		// 商品加载
+		Product product = productService.getProductByKey(id);
+
+		model.addAttribute("product", product);
+
+		// skus
+//		SkuQuery skuQuery = new SkuQuery();
+//		skuQuery.setProductId(id);
+		List<Sku> skus = skuService.getStock(id);
+		model.addAttribute("skus", skus);
+		// 去重复
+		List<Color> colors = new ArrayList<Color>();
+		// 遍历SKu
+		for (Sku sku : skus) {
+			// 判断集合中是否已经有此颜色对象了
+			if (!colors.contains(sku.getColor())) {
+				colors.add(sku.getColor());
+			}
+		}
+		model.addAttribute("colors", colors);
+
+		return "product/productDetail";
 	}
 
 }

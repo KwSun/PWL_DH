@@ -41,7 +41,7 @@ $(function(){
 		</span>
 	</p>
 	<ul class="r uls">
-	<li class="dev">您好,欢迎来到新巴巴运动网！</li>
+	<li class="dev">您好,欢迎来到飘物流!</li>
 	<li class="dev"><a href="#" title="退出">[退出]</a></li>
 	<li class="dev"><a href="#" title="在线客服">在线客服</a></li>
 	<li class="dev after"><a href="#" title="English">English</a></li>

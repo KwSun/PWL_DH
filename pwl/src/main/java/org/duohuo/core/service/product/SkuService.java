@@ -71,4 +71,9 @@ public interface SkuService {
 	 */
 	public List<Sku> getSkuList(SkuQuery skuQuery);
 	
+	/**
+	 * 库存大于>0
+	 */
+	public List<Sku> getStock(Integer productId);
+	
 }

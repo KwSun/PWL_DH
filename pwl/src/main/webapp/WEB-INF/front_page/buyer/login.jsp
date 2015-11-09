@@ -5,7 +5,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>登录_新巴巴运动网</title>
+<title>登录_飘物流</title>
 <link rel="stylesheet" href="/res/css/style.css" />
 <script src="/res/js/jquery.js"></script>
 <script src="/res/js/com.js"></script>
@@ -18,7 +18,7 @@
 		</span>
 	</p>
 	<ul class="r uls">
-	<li class="dev">您好,欢迎来到新巴巴运动网！</li>
+	<li class="dev">您好,欢迎来到飘物流！</li>
 	<li class="dev"><a href="#" title="在线客服">在线客服</a></li>
 	<li class="dev after"><a href="#" title="English">English</a></li>
 	</ul>
@@ -32,7 +32,7 @@
 <div class="sign">
 	<div class="l ad420x205"><a href="#" title="title"><img src="/res/img/pic/ppp0.jpg" width="400" height="400"/></a></div>
 	<div class="r">
-		<h2 title="登录新巴巴运动网">登录新巴巴运动网</h2>
+		<h2 title="登录飘物流">登录飘物流</h2>
 		<form id="jvForm" action="../buyer/index.jsp" method="post">
 			<input type="hidden" name="returnUrl" value="${param.directUrl}"/>
 			<ul class="uls form">

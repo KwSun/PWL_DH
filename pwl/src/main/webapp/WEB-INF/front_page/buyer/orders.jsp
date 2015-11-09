@@ -2,7 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>新巴巴运动网_用户中心</title>
+<title>飘物流_用户中心</title>
 <link rel="stylesheet" href="/res/css/style.css" />
 <script src="/res/js/jquery.js"></script>
 <script src="/res/js/com.js"></script>
@@ -15,7 +15,7 @@
 		</span>
 	</p>
 	<ul class="r uls">
-	<li class="dev">您好,欢迎来到新巴巴运动网！</li>
+	<li class="dev">您好,欢迎来到飘物流！</li>
 	<li class="dev"><a href="#" title="退出">[退出]</a></li>
 	<li class="dev"><a href="#" title="在线客服">在线客服</a></li>
 	<li class="dev after"><a href="#" title="English">English</a></li>

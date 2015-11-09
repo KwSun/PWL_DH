@@ -1,6 +1,9 @@
 package org.duohuo.core.controller.admin;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.duohuo.common.page.Pagination;
@@ -9,6 +12,7 @@ import org.duohuo.core.bean.product.Color;
 import org.duohuo.core.bean.product.Feature;
 import org.duohuo.core.bean.product.Img;
 import org.duohuo.core.bean.product.Product;
+import org.duohuo.core.bean.product.Sku;
 import org.duohuo.core.bean.product.Type;
 import org.duohuo.core.query.product.BrandQuery;
 import org.duohuo.core.query.product.ColorQuery;
@@ -19,7 +23,9 @@ import org.duohuo.core.service.product.BrandService;
 import org.duohuo.core.service.product.ColorService;
 import org.duohuo.core.service.product.FeatureService;
 import org.duohuo.core.service.product.ProductService;
+import org.duohuo.core.service.product.SkuService;
 import org.duohuo.core.service.product.TypeService;
+import org.duohuo.core.service.staticpage.StaticPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -46,6 +52,10 @@ public class ProductController {
 	private FeatureService featureService;
 	@Autowired
 	private ColorService colorService;
+	@Autowired
+	private StaticPageService staticPageService;
+	@Autowired
+	private SkuService skuService;
 	
 
 	//商品列表
@@ -175,14 +185,36 @@ public class ProductController {
 		//上架
 		product.setIsShow(1);
 		//上架
-		if(null != ids && ids.length >0){
-			for(Integer id : ids){
-				product.setId(id);
-				//修改上架状态
-				productService.updateProductByKey(product);
-			}
-		}
-		//TODO  静态化 
+				if(null != ids && ids.length >0){
+					for(Integer id : ids){
+						product.setId(id);
+						//修改上架状态
+						productService.updateProductByKey(product);
+						//静态化 
+						Map<String,Object> root = new HashMap<String,Object>();
+						//设置值
+						//商品加载
+						Product p = productService.getProductByKey(id);
+						
+						root.put("product", p);
+						
+						//skus
+						List<Sku> skus = skuService.getStock(id);
+						root.put("skus", skus);
+						//去重复
+						List<Color>  colors = new ArrayList<Color>();
+						//遍历SKu
+						for(Sku sku : skus){
+							//判断集合中是否已经有此颜色对象了
+							if(!colors.contains(sku.getColor())){
+								colors.add(sku.getColor());
+							}
+						}
+						root.put("colors", colors);
+						staticPageService.productIndex(root, id);
+					}
+				}
+		
 		
 		
 		

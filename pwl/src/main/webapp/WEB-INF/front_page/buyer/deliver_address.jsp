@@ -18,7 +18,7 @@
 		</span>
 	</p>
 	<ul class="r uls">
-	<li class="dev">您好,欢迎来到新巴巴运动网！</li>
+	<li class="dev">您好,欢迎来到飘物流！</li>
 	<li class="dev"><a href="javascript:void(0)" onclick="logout()" title="退出">[退出]</a></li>
 	<li class="dev"><a href="javascript:void(0)" onclick="myOrder()" title="我的订单">我的订单</a></li>
 	<li class="dev"><a href="#" title="在线客服">在线客服</a></li>

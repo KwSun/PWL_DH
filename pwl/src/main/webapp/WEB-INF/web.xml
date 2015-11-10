@@ -76,9 +76,17 @@
 			<param-value>classpath:springmvc-back.xml</param-value>
 		</init-param>
 	</servlet>
-	
 	<servlet-mapping>
 		<servlet-name>back</servlet-name>
 		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>captcha</servlet-name>
+		<servlet-class>org.duohuo.common.captcha.JcaptchaServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>captcha</servlet-name>
+		<url-pattern>/captcha.svl</url-pattern>
 	</servlet-mapping>
 </web-app>

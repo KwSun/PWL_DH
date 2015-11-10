@@ -21,4 +21,17 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	
+	<!-- 映射器 -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<bean class="org.duohuo.core.web.SpringmvcInterceptor">
+					<property name="adminId" value="1"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<!-- 适配器 -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
+	
 </beans>

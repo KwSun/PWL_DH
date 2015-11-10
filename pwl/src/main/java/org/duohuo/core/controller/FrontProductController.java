@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.duohuo.common.page.Pagination;
+import org.duohuo.common.web.session.SessionProvider;
 import org.duohuo.core.bean.product.Brand;
 import org.duohuo.core.bean.product.Color;
 import org.duohuo.core.bean.product.Feature;
@@ -46,6 +47,8 @@ public class FrontProductController {
 	private FeatureService featureService;
 	@Autowired
 	private SkuService skuService;
+	@Autowired
+	private SessionProvider sessionProvider;
 
 	// 商品列表页面
 	@RequestMapping(value = "/product/display/list.shtml")

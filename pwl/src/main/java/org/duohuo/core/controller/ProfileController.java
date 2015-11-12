@@ -2,11 +2,22 @@ package org.duohuo.core.controller;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang3.StringUtils;
 import org.duohuo.common.encode.Md5Pwd;
 import org.duohuo.common.web.session.SessionProvider;
+import org.duohuo.core.bean.country.City;
+import org.duohuo.core.bean.country.Province;
+import org.duohuo.core.bean.country.Town;
 import org.duohuo.core.bean.user.Buyer;
+import org.duohuo.core.query.country.CityQuery;
+import org.duohuo.core.query.country.TownQuery;
+import org.duohuo.core.service.country.CityService;
+import org.duohuo.core.service.country.ProvinceService;
+import org.duohuo.core.service.country.TownService;
 import org.duohuo.core.service.user.BuyerService;
 import org.duohuo.core.web.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +44,12 @@ public class ProfileController {
 	private BuyerService buyerService;
 	@Autowired
 	private ImageCaptchaService imageCaptchaService;
+	@Autowired
+	private ProvinceService provinceService;
+	@Autowired
+	private CityService cityService;
+	@Autowired
+	private TownService townService;
 
 	//GET
 	@RequestMapping(value = "/shopping/login.shtml",method=RequestMethod.GET)
@@ -100,6 +117,29 @@ public class ProfileController {
 		@RequestMapping(value = "/buyer/index.shtml")
 		public String index(){
 			return "buyer/index";
+		}
+		//个人资料
+		@RequestMapping(value = "/buyer/profile.shtml")
+		public String profile(HttpServletRequest request,ModelMap model){
+			//加载用户
+			Buyer buyer = (Buyer) sessionProvider.getAttribute(request, Constants.BUYER_SESSION);
+			Buyer b = buyerService.getBuyerByKey(buyer.getUsername());
+			model.addAttribute("buyer", b);
+			//省
+			List<Province> provinces = provinceService.getProvinceList(null);
+			model.addAttribute("provinces", provinces);
+			//市 
+			CityQuery cityQuery = new CityQuery();
+			cityQuery.setProvince(b.getProvince());
+			List<City> citys = cityService.getCityList(cityQuery);
+			model.addAttribute("citys", citys);
+			//县
+			TownQuery  townQuery = new TownQuery();
+			townQuery.setCity(b.getCity());
+			List<Town> towns = townService.getTownList(townQuery);
+			model.addAttribute("towns", towns);
+			
+			return "buyer/profile";
 		}
 		
 }

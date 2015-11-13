@@ -19,8 +19,14 @@
 	</p>
 	<ul class="r uls">
 	<li class="dev">您好,欢迎来到飘物流！</li>
+	<c:if test="${!isLogin}">
+	<li class="dev"><a href="javascript:void(0)" onclick="login()" title="登陆">[登陆]</a></li>
+	<li class="dev"><a href="javascript:void(0)" onclick="register()" title="免费注册">[免费注册]</a></li>
+	</c:if>
+	<c:if test="${!isLogin}">
 	<li class="dev"><a href="javascript:void(0)" onclick="logout()" title="退出">[退出]</a></li>
 	<li class="dev"><a href="javascript:void(0)" onclick="myOrder()" title="我的订单">我的订单</a></li>
+	</c:if>
 	<li class="dev"><a href="#" title="在线客服">在线客服</a></li>
 	<li class="dev after"><a href="#" title="English">English</a></li>
 	</ul>
@@ -108,7 +114,7 @@
 		<h2 class="h2 h2_l mt"><em title="账户管理">账户管理</em><cite>&nbsp;</cite></h2>
 		<div class="box bg_gray">
 			<ul class="ul left_nav">
-			<li><a href="/buyer/profile.do" title="个人资料">个人资料</a></li>
+			<li><a href="/buyer/profile.shtml" title="个人资料">个人资料</a></li>
 			<li><a href="../buyer/deliver_address.jsp" title="收货地址">收货地址</a></li>
 			<li><a href="../buyer/change_password.jsp" title="修改密码">修改密码</a></li>
 			</ul>

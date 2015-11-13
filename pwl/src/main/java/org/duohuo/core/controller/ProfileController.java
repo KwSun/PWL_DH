@@ -5,9 +5,11 @@ package org.duohuo.core.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.duohuo.common.encode.Md5Pwd;
+import org.duohuo.common.web.ResponseUtils;
 import org.duohuo.common.web.session.SessionProvider;
 import org.duohuo.core.bean.country.City;
 import org.duohuo.core.bean.country.Province;
@@ -20,6 +22,7 @@ import org.duohuo.core.service.country.ProvinceService;
 import org.duohuo.core.service.country.TownService;
 import org.duohuo.core.service.user.BuyerService;
 import org.duohuo.core.web.Constants;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -140,6 +143,18 @@ public class ProfileController {
 			model.addAttribute("towns", towns);
 			
 			return "buyer/profile";
+		}
+		
+		@RequestMapping(value = "/buyer/city.shtml")
+		public void city(String code,HttpServletResponse response){
+			CityQuery cityQuery = new CityQuery();
+			cityQuery.setProvince(code);
+			List<City> citys = cityService.getCityList(cityQuery);
+			
+			JSONObject jo = new JSONObject();
+			jo.put("citys", citys);
+			ResponseUtils.renderJson(response, jo.toString());
+			
 		}
 		
 }
